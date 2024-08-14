@@ -1,46 +1,65 @@
-import { addTodoAction } from "features/todo-mutation";
-// import { useAddTodoMutation } from "features/todo-mutation/api/todoApi";
-import { Plus } from "lucide-react";
-import { useForm } from "react-hook-form";
+import { useForm, Controller } from "react-hook-form";
 import { useAppDispatch } from "shared/lib";
-import { Button, InputBase } from "shared/ui";
+import { addTodoAction, generateWeekdays } from "features/todo-mutation";
+import { Button, InputBase, SelectComponent } from "shared/ui";
 
-export const TodoForm = () => {
-  const { register, handleSubmit, reset } = useForm<{ todo: string }>();
-  // const [addTodo] = useAddTodoMutation();
+interface TodoFormProps {
+  onClose: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+export const TodoForm = ({ onClose }: TodoFormProps) => {
+  const { register, handleSubmit, control, watch, reset } = useForm<{
+    todo: string;
+    date: string;
+  }>();
   const dispatch = useAppDispatch();
+  const weekdays = generateWeekdays();
 
-  const onSubmit = handleSubmit(async ({ todo }) => {
+  const onSubmit = handleSubmit(async ({ todo, date }) => {
     try {
-      // const newTodo = await addTodo({
-      //   // id: Date.now(),
-      //   todo,
-      //   completed: false,
-      //   userId: Math.floor(Math.random() * 200) + 1,
-      // }).unwrap();
-
       dispatch(
         addTodoAction({
           id: Date.now(),
           todo,
           completed: false,
           userId: Date.now(),
+          date,
         })
       );
       reset();
+      onClose(false);
     } catch (error) {
       console.error("Failed to add todo:", error);
     }
   });
 
+  const todoValue = watch("todo");
+  const dateValue = watch("date");
+
+  const isSubmitDisabled = !todoValue || !dateValue;
+
   return (
-    <form onSubmit={onSubmit} className="flex gap-2 w-full">
+    <form onSubmit={onSubmit} className="flex flex-col gap-4 w-full">
       <InputBase
         registration={register("todo", { required: true })}
         placeholder="Add new todo"
         className="w-full text-gray-700"
       />
-      <Button type="submit" variant="icon" icon={<Plus />} />
+      <Controller
+        name="date"
+        control={control}
+        render={({ field }) => (
+          <SelectComponent
+            options={weekdays}
+            onValueChange={(value) => field.onChange(value)}
+            triggerClassName="border-slate-300 border bg-transparent rounded py-2 px-4 focus:border-indigo-200 focus:outline-none w-full text-left"
+          />
+        )}
+        rules={{ required: true }}
+      />
+      <Button type="submit" disabled={isSubmitDisabled}>
+        Add new todo
+      </Button>
     </form>
   );
 };

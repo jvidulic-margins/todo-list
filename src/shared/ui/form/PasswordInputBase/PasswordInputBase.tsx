@@ -27,11 +27,11 @@ export const PasswordInputBase = ({ className, isError, ...props }: Props) => {
       >
         {show ? (
           <EyeShow
-            className={cn("fill-white w-6 h-6", isError && "fill-rose-500")}
+            className={cn("fill-white w-6 h-6", isError && "fill-rose-400")}
           />
         ) : (
           <EyeHidden
-            className={cn("fill-white w-6 h-6", isError && "fill-rose-500")}
+            className={cn("fill-white w-6 h-6", isError && "fill-rose-400")}
           />
         )}
       </button>

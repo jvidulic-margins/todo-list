@@ -4,36 +4,36 @@ import { type ButtonVariant, type ButtonSize, ButtonColor } from "./types";
 /** Styles for contained variant */
 const getContainedClasses = (color: ButtonColor): string => {
   if (color === "error")
-    return "text-white bg-rose-500 hover:bg-rose-400 active:bg-rose-600 disabled:bg-gray-500";
+    return "text-white bg-rose-400 hover:bg-rose-300 active:bg-rose-600 disabled:opacity-50";
 
   // Default color: primary
-  return "text-white bg-blue-500 hover:bg-blue-400 active:bg-blue-600 disabled:bg-gray-500";
+  return "text-white bg-indigo-400 hover:bg-indigo-300 active:bg-blue-600 disabled:opacity-50";
 };
 
 /** Styles for outlined variant */
 const getOutlinedClasses = (color: ButtonColor): string => {
   if (color === "error")
-    return "border-2 border-rose-500 hover:border-rose-400 active:border-rose-600 text-rose-500 hover:text-rose-400 active:text-rose-600 disabled:border-gray-500 disabled:text-gray-500";
+    return "border-2 border-rose-400 hover:border-rose-300 active:border-rose-600 text-rose-400 hover:text-rose-400 active:text-rose-600 disabled:border-gray-500 disabled:text-gray-500";
 
   // Default color: primary
-  return "border-2 border-blue-500 hover:border-blue-400 active:border-blue-600 text-blue-500 hover:text-blue-400 active:text-blue-600 disabled:border-gray-500 disabled:text-gray-500";
+  return "border-2 border-indigo-400 hover:border-indigo-300 active:border-blue-600 text-indigo-400 hover:text-indigo-300 active:text-blue-600 disabled:border-gray-500 disabled:text-gray-500";
 };
 
 const getIconClasses = (color: ButtonColor): string => {
   if (color === "error")
-    return "p-2 bg-rose-500 text-white hover:bg-rose-400 active:bg-rose-600 disabled:bg-gray-500";
+    return "p-2 bg-rose-400 text-white hover:bg-rose-300 active:bg-rose-600 disabled:opacity-50";
 
   // Default color: primary
-  return "p-2 text-white bg-blue-500 hover:bg-blue-400 active:bg-blue-600 disabled:bg-gray-500";
+  return "p-2 text-white bg-indigo-400 hover:bg-indigo-300 active:bg-blue-600 disabled:opacity-50";
 };
 
 /** Styles for text variant */
 const getTextClasses = (color: ButtonColor): string => {
   if (color === "error")
-    return "text-rose-500 hover:text-rose-400 active:text-rose-600 disabled:text-gray-500";
+    return "text-rose-400 hover:text-rose-400 active:text-rose-600 disabled:text-gray-500";
 
   // Default color: primary
-  return "text-blue-500 hover:text-blue-400 active:text-blue-600 disabled:text-gray-500";
+  return "text-indigo-400 hover:text-indigo-300 active:text-blue-600 disabled:text-gray-500";
 };
 
 /** Styles for link variant */

@@ -17,6 +17,7 @@ interface Props {
   disabled?: boolean;
   isLoading?: boolean;
   icon?: React.ReactNode;
+  className?: string;
 }
 
 /**
@@ -43,6 +44,7 @@ export const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, Props>(
       isLoading,
       disabled,
       icon,
+      className,
       ...commonProps
     },
     ref
@@ -50,7 +52,8 @@ export const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, Props>(
     const classes = cn(
       getBaseClasses(),
       getSizeClasses(size),
-      getVariantClasses(variant, color)
+      getVariantClasses(variant, color),
+      className
     );
 
     if (to)
@@ -88,7 +91,7 @@ export const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, Props>(
         disabled={disabled || isLoading}
         {...commonProps}
       >
-        {isLoading ? "Loading..." : icon ?? children}
+        {isLoading ? "Loading..." : (icon ?? children)}
       </button>
     );
   }

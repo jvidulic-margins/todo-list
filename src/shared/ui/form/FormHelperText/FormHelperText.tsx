@@ -17,7 +17,7 @@ export const FormHelperText = ({
     <span
       className={cn(
         "text-xs",
-        isError ? "text-rose-500" : "text-slate-400",
+        isError ? "text-rose-400" : "text-slate-400",
         className
       )}
       {...props}

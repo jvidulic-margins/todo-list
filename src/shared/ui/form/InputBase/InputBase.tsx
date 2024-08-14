@@ -20,8 +20,8 @@ export const InputBase = ({
   return (
     <input
       className={cn(
-        "border-slate-300 border bg-transparent rounded py-2 px-4 focus:border-blue-300 focus:outline-none",
-        isError && "border-rose-500 focus:border-rose-300",
+        "border-slate-300 border bg-transparent rounded py-2 px-4 focus:border-indigo-200 focus:outline-none w-full",
+        isError && "border-rose-400 focus:border-rose-300",
         className
       )}
       {...props}

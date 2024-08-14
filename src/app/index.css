@@ -1,7 +1,24 @@
+@import url("https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+@layer utilities {
+  /* Hide scrollbar by default */
+  .styled-scrollbar::-webkit-scrollbar {
+    width: 12px;
+  }
+  .styled-scrollbar {
+    -ms-overflow-style: auto; /* IE and Edge */
+    scrollbar-width: auto; /* Firefox */
+  }
+
+  .styled-scrollbar::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+  }
+}
+
 body {
-  @apply bg-gradient-to-br from-cyan-500 to-blue-500;
+  @apply bg-purple-100 text-indigo-950;
 }

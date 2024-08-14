@@ -1,3 +1,6 @@
+export { TodoDayList } from "./ui/TodoDayList/TodoDayList";
+
+export { generateWeekdays } from "./lib/utils/dateUtils";
 export {
   addTodo as addTodoAction,
   updateTodo as updateTodoAction,
@@ -12,5 +15,4 @@ export {
 export { todoReducer } from "./model/todoSlice";
 export { TodoList } from "../../widgets/TodoList/TodoList";
 export { TodoForm } from "./ui/TodoForm/TodoForm";
-
 export type { Todo } from "./model/types";

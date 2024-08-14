@@ -17,7 +17,7 @@ export const FormControlLabel = ({
   ...props
 }: Props) => {
   return (
-    <label className={cn(isError && "text-rose-500", className)} {...props}>
+    <label className={cn(isError && "text-rose-400", className)} {...props}>
       {children}
     </label>
   );

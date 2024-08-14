@@ -5,7 +5,7 @@ export const getBaseClasses = (): string =>
 
 export const getCheckboxColorClasses = (color: CheckboxColor): string => {
   if (color === "error") {
-    return "border-rose-500 checked:border-rose-500 checked:bg-rose-500 before:bg-rose-gray-500 checked:before:bg-rose-900 hover:before:opacity-10 hover:before:bg-rose-900";
+    return "border-rose-400 checked:border-rose-400 checked:bg-rose-400 before:bg-rose-gray-500 checked:before:bg-rose-900 hover:before:opacity-10 hover:before:bg-rose-900";
   }
-  return "border-blue-gray-200 checked:border-blue-500 checked:bg-blue-500 before:bg-blue-gray-500 checked:before:bg-blue-900 hover:before:opacity-10 hover:before:bg-blue-900";
+  return "border-blue-gray-200 checked:border-indigo-400 checked:bg-indigo-400 before:bg-blue-gray-500 checked:before:bg-blue-900 hover:before:opacity-10 hover:before:bg-blue-900";
 };

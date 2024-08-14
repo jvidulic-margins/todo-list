@@ -22,5 +22,5 @@ export const publicRoutes: RouteObject[] = [
         element: <Navigate to="/login" replace />,
       },
     ],
-  },  
+  },
 ];

@@ -1,3 +1,4 @@
+export { SelectComponent } from "./elements/Select/Select";
 export { Checkbox } from "./elements/Checkbox/Checkbox";
 export { Button } from "./elements/Button/Button";
 export { OnboardingLayoutBase } from "./layout/OnboardingLayoutBase/OnboardingLayoutBase";

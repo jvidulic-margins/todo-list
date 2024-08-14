@@ -69,7 +69,7 @@ export const TodoItem = ({ todo }: TodoItemProps) => {
         />
         {isEditing && (
           <textarea
-            className="border-none p-2 rounded-md shadow-sm bg-white outline-none font-inherit text-inherit h-auto w-auto text-blue-500"
+            className="border-none rounded-md px-2 shadow-sm bg-white outline-none font-inherit text-inherit text-indigo-400"
             value={task}
             onChange={(e) => setTask(e.target.value)}
           />
