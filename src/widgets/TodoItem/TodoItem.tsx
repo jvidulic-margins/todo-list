@@ -5,7 +5,7 @@ import {
   // useDeleteTodoMutation,
   // useUpdateTodoMutation,
 } from "features/todo-mutation";
-import { Pencil, Trash } from "lucide-react";
+import { Pencil, Save, Trash } from "lucide-react";
 import { useState } from "react";
 import { useAppDispatch } from "shared/lib";
 import { Button, Checkbox } from "shared/ui";
@@ -58,7 +58,7 @@ export const TodoItem = ({ todo }: TodoItemProps) => {
   };
 
   return (
-    <li className="flex items-center justify-between gap-2 w-full py-2 px-6 pl-3 bg-gray-100 shadow-sm rounded-md">
+    <li className="flex flex-row items-center justify-between gap-2 w-full py-2 max-[450px]:px-4 px-6 max-[450px]:pl-1 pl-3 bg-gray-100 shadow-sm rounded-md max-[450px]:text-sm">
       <div className="inline-flex items-center w-3/4 whitespace-break-spaces">
         <Checkbox
           id={`todo-checkbox-${todo.id}`}
@@ -69,7 +69,7 @@ export const TodoItem = ({ todo }: TodoItemProps) => {
         />
         {isEditing && (
           <textarea
-            className="border-none rounded-md px-2 shadow-sm bg-white outline-none font-inherit text-inherit text-indigo-400"
+            className="border-none rounded-md px-2 shadow-sm bg-white outline-none font-inherit text-inherit text-indigo-400 max-[450px]:w-[120px]"
             value={task}
             onChange={(e) => setTask(e.target.value)}
           />
@@ -77,19 +77,23 @@ export const TodoItem = ({ todo }: TodoItemProps) => {
       </div>
       <div className="flex items-center gap-2 justify-center">
         {isEditing ? (
-          <Button onClick={handleSave}>Save</Button>
+          <Button
+            onClick={handleSave}
+            variant="icon"
+            icon={<Save className="max-sm:w-5 max-sm:h-5" />}
+          />
         ) : (
           <Button
             onClick={() => setIsEditing(true)}
             variant="icon"
-            icon={<Pencil />}
+            icon={<Pencil className="max-sm:w-5 max-sm:h-5" />}
           />
         )}
         <Button
           onClick={handleDelete}
           variant="icon"
           color="error"
-          icon={<Trash />}
+          icon={<Trash className="max-sm:w-5 max-sm:h-5" />}
         />
       </div>
     </li>
