@@ -1,19 +1,19 @@
 import { useForm, Controller } from "react-hook-form";
-import { useAppDispatch } from "shared/lib";
-import { addTodoAction, generateWeekdays } from "features/todo-mutation";
+import { cn, useAppDispatch } from "shared/lib";
+import { addTodoAction } from "features/todo-mutation";
 import { Button, InputBase, SelectComponent } from "shared/ui";
 
 interface TodoFormProps {
   onClose: React.Dispatch<React.SetStateAction<boolean>>;
+  weekdays: string[];
 }
 
-export const TodoForm = ({ onClose }: TodoFormProps) => {
+export const TodoForm = ({ onClose, weekdays }: TodoFormProps) => {
   const { register, handleSubmit, control, watch, reset } = useForm<{
     todo: string;
     date: string;
   }>();
   const dispatch = useAppDispatch();
-  const weekdays = generateWeekdays();
 
   const onSubmit = handleSubmit(async ({ todo, date }) => {
     try {
@@ -51,8 +51,12 @@ export const TodoForm = ({ onClose }: TodoFormProps) => {
         render={({ field }) => (
           <SelectComponent
             options={weekdays}
+            defaultValue={field.value}
             onValueChange={(value) => field.onChange(value)}
-            triggerClassName="border-slate-300 border bg-transparent rounded py-2 px-4 focus:border-indigo-200 focus:outline-none w-full text-left"
+            triggerClassName={cn(
+              "border-slate-300 border bg-transparent rounded py-2 px-4 focus:border-indigo-200 focus:outline-none w-full text-left",
+              { "text-gray-400": !dateValue }
+            )}
           />
         )}
         rules={{ required: true }}

@@ -7,7 +7,7 @@ const getContainedClasses = (color: ButtonColor): string => {
     return "text-white bg-rose-400 hover:bg-rose-300 active:bg-rose-600 disabled:opacity-50";
 
   // Default color: primary
-  return "text-white bg-indigo-400 hover:bg-indigo-300 active:bg-blue-600 disabled:opacity-50";
+  return "text-white bg-indigo-400 hover:bg-indigo-300 active:bg-indigo-500 disabled:opacity-50";
 };
 
 /** Styles for outlined variant */
@@ -24,7 +24,7 @@ const getIconClasses = (color: ButtonColor): string => {
     return "p-2 bg-rose-400 text-white hover:bg-rose-300 active:bg-rose-600 disabled:opacity-50";
 
   // Default color: primary
-  return "p-2 text-white bg-indigo-400 hover:bg-indigo-300 active:bg-blue-600 disabled:opacity-50";
+  return "p-2 text-white bg-indigo-400 hover:bg-indigo-300 active:bg-indigo-500 disabled:opacity-50";
 };
 
 /** Styles for text variant */

@@ -6,7 +6,7 @@ export const baseApi = createApi({
   baseQuery: fetchBaseQuery({ baseUrl: env.apiUrl }),
   // 👇 createApi function requires endpoints function, but we will define them in separate files
   // eslint-disable-next-line no-unused-vars, @typescript-eslint/no-unused-vars
-  endpoints: (builder) => ({}),
+  endpoints: () => ({}),
 });
 
 export const todosUrl = "https://dummyjson.com/todos";

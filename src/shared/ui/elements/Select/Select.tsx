@@ -1,9 +1,10 @@
 import * as Select from "@radix-ui/react-select";
+import { SetStateAction } from "react";
 
 interface SelectComponentProps {
   options: string[];
   defaultValue?: string;
-  onValueChange?: (value: string) => void;
+  onValueChange?: React.Dispatch<SetStateAction<string>>;
   trigger?: React.ReactNode;
   triggerClassName?: string;
 }
@@ -18,9 +19,7 @@ export const SelectComponent = ({
   return (
     <Select.Root defaultValue={defaultValue} onValueChange={onValueChange}>
       <Select.Trigger className={triggerClassName}>
-        {trigger ?? (
-          <Select.Value placeholder="Select date" className="text-gray-200" />
-        )}
+        {trigger ?? <Select.Value placeholder="Select date" />}
       </Select.Trigger>
       <Select.Portal>
         <Select.Content
