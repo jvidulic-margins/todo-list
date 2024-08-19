@@ -24,6 +24,7 @@ export const TodoForm = ({ onClose, weekdays }: TodoFormProps) => {
           completed: false,
           userId: Date.now(),
           date,
+          status: "todo",
         })
       );
       reset();

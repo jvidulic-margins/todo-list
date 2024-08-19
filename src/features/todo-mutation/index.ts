@@ -1,5 +1,6 @@
-export { TodoDayList } from "./ui/TodoDayList/TodoDayList";
+export { progressBarColumns } from "./lib/config/constants";
 
+export { TodoDayList } from "./ui/TodoDayList/TodoDayList";
 export { generateWeekdays } from "./lib/utils/dateUtils";
 export {
   addTodo as addTodoAction,
@@ -15,4 +16,4 @@ export {
 export { todoReducer } from "./model/todoSlice";
 export { TodoList } from "../../widgets/TodoList/TodoList";
 export { TodoForm } from "./ui/TodoForm/TodoForm";
-export type { Todo } from "./model/types";
+export type { Todo, ProgressBar, ProgressBarColumn } from "./model/types";
