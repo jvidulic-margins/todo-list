@@ -1,5 +1,6 @@
 import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
+import { DraggableTypesEnum } from "entities/todo";
 import {
   deleteTodoAction,
   Todo,
@@ -28,7 +29,7 @@ export const TodoItem = ({ todo }: TodoItemProps) => {
   } = useSortable({
     id: todo.id,
     data: {
-      type: "Todo",
+      type: DraggableTypesEnum.TODO,
       todo,
     },
     disabled: isEditing,

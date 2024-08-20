@@ -1,6 +1,6 @@
 import { useForm, Controller } from "react-hook-form";
 import { cn, useAppDispatch } from "shared/lib";
-import { addTodoAction } from "features/todo-mutation";
+import { addTodoAction, StatusEnum } from "features/todo-mutation";
 import { Button, InputBase, SelectComponent } from "shared/ui";
 
 interface TodoFormProps {
@@ -24,7 +24,7 @@ export const TodoForm = ({ onClose, weekdays }: TodoFormProps) => {
           completed: false,
           userId: Date.now(),
           date,
-          status: "todo",
+          status: StatusEnum.TODO,
         })
       );
       reset();

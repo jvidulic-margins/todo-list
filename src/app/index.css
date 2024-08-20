@@ -6,7 +6,7 @@
 @layer utilities {
   /* Hide scrollbar by default */
   .styled-scrollbar::-webkit-scrollbar {
-    width: 12px;
+    width: 8px;
   }
   .styled-scrollbar {
     -ms-overflow-style: auto; /* IE and Edge */
