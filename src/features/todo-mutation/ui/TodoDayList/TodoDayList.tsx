@@ -1,5 +1,5 @@
 import { TodoList } from "widgets/TodoList";
-import { statusColumns, useDragHooks } from "features/todo-mutation";
+import { statusColumns, useDrag } from "features/todo-mutation";
 import {
   DndContext,
   DragOverlay,
@@ -15,8 +15,7 @@ interface TodoDayListProps {
 }
 
 export const TodoDayList = ({ selectedWeekDay }: TodoDayListProps) => {
-  const { activeTodo, todos, onDragOver, onDragEnd, onDragStart } =
-    useDragHooks();
+  const { activeTodo, todos, onDragOver, onDragEnd, onDragStart } = useDrag();
 
   const sensors = useSensors(
     useSensor(PointerSensor, {

@@ -11,7 +11,7 @@ import { setTodos } from "./todoSlice";
 import { Todo } from "./types";
 import { dragOverValidate } from "./drag.validators";
 
-export const useDragHooks = () => {
+export const useDrag = () => {
   const [activeTodo, setActiveTodo] = useState<Todo | null>(null);
   const dispatch = useAppDispatch();
   const todos: Todo[] = useAppSelector((state) => state.todo.todos);

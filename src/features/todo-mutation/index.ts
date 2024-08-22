@@ -1,4 +1,4 @@
-export { useDragHooks } from "./model/drag.hooks";
+export { useDrag } from "./model/drag.events";
 export { dragOverValidate, validateType } from "./model/drag.validators";
 
 export {
