@@ -1,6 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { Todo } from "./types";
-import { generateWeekdays } from "../lib/utils/dateUtils";
 
 interface TodoState {
   todos: Todo[];
@@ -17,7 +16,6 @@ const todoSlice = createSlice({
     setTodos: (state, action: PayloadAction<Todo[]>) => {
       state.todos = action.payload.map((payload) => ({
         ...payload,
-        date: generateWeekdays()[0],
       }));
     },
     addTodo: (state, action: PayloadAction<Todo>) => {

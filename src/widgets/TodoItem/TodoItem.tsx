@@ -1,13 +1,14 @@
+import { useSortable } from "@dnd-kit/sortable";
+import { CSS } from "@dnd-kit/utilities";
+import { DraggableTypesEnum } from "entities/todo";
 import {
   deleteTodoAction,
   Todo,
   updateTodoAction,
-  // useDeleteTodoMutation,
-  // useUpdateTodoMutation,
 } from "features/todo-mutation";
 import { Pencil, Save, Trash } from "lucide-react";
 import { useState } from "react";
-import { useAppDispatch } from "shared/lib";
+import { cn, useAppDispatch } from "shared/lib";
 import { Button, Checkbox } from "shared/ui";
 
 interface TodoItemProps {
@@ -17,16 +18,33 @@ interface TodoItemProps {
 export const TodoItem = ({ todo }: TodoItemProps) => {
   const [isEditing, setIsEditing] = useState(false);
   const [task, setTask] = useState(todo.todo);
-  // const [updateTodo] = useUpdateTodoMutation();
-  // const [deleteTodo] = useDeleteTodoMutation();
   const dispatch = useAppDispatch();
+  const {
+    setNodeRef,
+    attributes,
+    listeners,
+    transform,
+    transition,
+    isDragging,
+  } = useSortable({
+    id: todo.id,
+    data: {
+      type: DraggableTypesEnum.TODO,
+      todo,
+    },
+    disabled: isEditing,
+  });
+
+  const itemClass =
+    "flex flex-row items-center justify-between gap-2 w-full py-2 max-[450px]:px-4 px-6 max-[450px]:pl-1 pl-3 bg-gray-100 shadow-sm rounded-md max-[450px]:text-sm";
+
+  const style = {
+    transition,
+    transform: CSS.Transform.toString(transform),
+  };
 
   const handleSave = async () => {
     try {
-      // const updatedTodo = await updateTodo({
-      //   id: todo.id,
-      //   data: { todo: task },
-      // }).unwrap();
       dispatch(updateTodoAction({ ...todo, id: todo.id, todo: task }));
       setIsEditing(false);
     } catch (error) {
@@ -36,7 +54,6 @@ export const TodoItem = ({ todo }: TodoItemProps) => {
 
   const handleDelete = async () => {
     try {
-      // await deleteTodo(todo.id).unwrap();
       dispatch(deleteTodoAction(todo.id));
     } catch (error) {
       console.error("Failed to delete todo:", error);
@@ -45,10 +62,6 @@ export const TodoItem = ({ todo }: TodoItemProps) => {
 
   const handleToggleComplete = async () => {
     try {
-      // const updatedTodo = await updateTodo({
-      //   id: todo.id,
-      //   data: { completed: !todo.completed },
-      // }).unwrap();
       dispatch(
         updateTodoAction({ ...todo, id: todo.id, completed: !todo.completed })
       );
@@ -57,8 +70,24 @@ export const TodoItem = ({ todo }: TodoItemProps) => {
     }
   };
 
+  if (isDragging) {
+    return (
+      <div
+        ref={setNodeRef}
+        style={style}
+        className={cn(itemClass, "h-16 opacity-50 border-2 border-indigo-500")}
+      />
+    );
+  }
+
   return (
-    <li className="flex flex-row items-center justify-between gap-2 w-full py-2 max-[450px]:px-4 px-6 max-[450px]:pl-1 pl-3 bg-gray-100 shadow-sm rounded-md max-[450px]:text-sm">
+    <li
+      ref={setNodeRef}
+      style={style}
+      {...attributes}
+      {...listeners}
+      className={itemClass}
+    >
       <div className="inline-flex items-center w-3/4 whitespace-break-spaces">
         <Checkbox
           id={`todo-checkbox-${todo.id}`}
@@ -69,6 +98,10 @@ export const TodoItem = ({ todo }: TodoItemProps) => {
         />
         {isEditing && (
           <textarea
+            ref={setNodeRef}
+            style={style}
+            {...attributes}
+            {...listeners}
             className="border-none rounded-md px-2 shadow-sm bg-white outline-none font-inherit text-inherit text-indigo-400 max-[450px]:w-[120px]"
             value={task}
             onChange={(e) => setTask(e.target.value)}

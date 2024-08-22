@@ -6,7 +6,7 @@
 @layer utilities {
   /* Hide scrollbar by default */
   .styled-scrollbar::-webkit-scrollbar {
-    width: 12px;
+    width: 8px;
   }
   .styled-scrollbar {
     -ms-overflow-style: auto; /* IE and Edge */
@@ -20,5 +20,5 @@
 }
 
 body {
-  @apply bg-purple-100 text-indigo-950;
+  @apply bg-indigo-100 text-indigo-950;
 }

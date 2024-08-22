@@ -1,6 +1,5 @@
 import { forwardRef } from "react";
 import { cn } from "shared/lib";
-// import { Checkmark } from "shared/assets/icons";
 import { getBaseClasses, getCheckboxColorClasses } from "./styles";
 
 export interface CheckboxProps {
@@ -45,7 +44,6 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
             {...props}
           />
           <span className="absolute text-white transition-opacity opacity-0 pointer-events-none top-2/4 left-2/4 -translate-y-2/4 -translate-x-2/4 peer-checked:opacity-100">
-            {/* <Checkmark /> */}
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-3.5 w-3.5"
